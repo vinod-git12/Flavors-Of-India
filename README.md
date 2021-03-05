@@ -125,7 +125,7 @@ src
 
 ## Component Breakdown
 
-![Time Estimates](https://i.imgur.com/NnikUdO.jpg)
+![Time Estimates](https://i.imgur.com/TuEdj0h.jpg)
 
 
 ## Time Estimates
