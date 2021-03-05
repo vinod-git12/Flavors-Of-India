@@ -125,13 +125,8 @@ src
 
 ## Component Breakdown
 
-| component   |    Type     | state | props |               Decription                                     |
-|__________________________________________________________________________________________________________|
-| Nav         |  functional |   y   |   n   | Nav provide link to Home, Restaurants, Add_Restaurants,Login |
-| Login       |  functional |   n   |   y   | The user will be able to sign up & login into their account  |
-| Restaurants |  functional |   n   |   y   | rendering Restaurants by using props                         |
-| User        |  functional |   n   |   y   | The user will be able to create  account and access profile  |
-| Reviews     |  functional |   n   | y     | The reviews will render with the Restaurants                 |
+![Time Estimates](https://i.imgur.com/NnikUdO.jpg)
+
 
 ## Time Estimates
 
