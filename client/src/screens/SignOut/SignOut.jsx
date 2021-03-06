@@ -1,19 +1,18 @@
-import React from "react";
-import Footer from "../Footer/Footer";
-import Nav from "../Nav/Nav";
-import "./Layout.css";
+import { useEffect } from "react";
+import { signOut } from "../../services/user";
+import { useHistory } from "react-router-dom";
 
-const Layout = (props) => {
-  return (
-    <div className="layout-children">
-      <div className="layout-content">
-        <Nav user={props.user} />
-        {/* screens go below */}
-        {props.children}
-      </div>
-      <Footer />
-    </div>
-  );
+const SignOut = (props) => {
+  const { clearUser, user } = props;
+  const history = useHistory();
+
+  useEffect(() => {
+    signOut(user)
+      .then(() => clearUser())
+      .finally(() => history.push("/"));
+  }, [history, clearUser, user]);
+
+  return "";
 };
 
-export default Layout;
+export default SignOut;
