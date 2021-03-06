@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @food.user = @current_user
+    @restaurant.user = @current_user
     if @restaurant.save
       render json: @restaurant, status: :created, location: @restaurant
     else

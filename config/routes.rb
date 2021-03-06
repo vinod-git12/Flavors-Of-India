@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :users
   resources :reviews, only: :index
-  # resources :restaurants
+  resources :restaurants
 
   resources :users do
     resources :restaurants do

@@ -1,14 +1,13 @@
-import api from "./api-Config";
-import jwtDecode from "jwt-decode";
+import api from "./apiConfig";
 
 export const signUp = async (credentials) => {
   try {
-    const response = await api.post("/users/sign-up", credentials);
-    localStorage.setItem("token", response.data.token);
-    const user = jwtDecode(response.data.token);
-    return user;
-  } catch (error) {
-    throw error;
+    const resp = await api.post('/auth/login', { authentication: loginData })
+    localStorage.setItem('authToken', resp.data.token);
+    api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`
+    return resp.data.user
+  } catch(e) {
+    throw(e) 
   }
 };
 
