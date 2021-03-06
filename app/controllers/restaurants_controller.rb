@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
+    @review = Review.find(params[:review_id])
     render json: @restaurant, include: :reviews
   end
 
@@ -37,7 +38,7 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1
   def destroy
-    @food = @current_user.foods.find(params[:id])
+    @review = Review.find(params[:review_id])
     @restaurant.destroy
   end
 
