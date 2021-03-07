@@ -9,28 +9,28 @@ const activeStyle = {
 
 const Nav = ({ user }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
 
   const handleIsClicked = () => setIsClicked(!isClicked);
   const closeMobileMenu = () => setIsClicked(false);
 
-  const onMouseEnter = () =>
-    setDropdown(window.innerWidth > 960 ? true : false);
+  // const onMouseEnter = () =>
+  //   setDropdown(window.innerWidth > 960 ? true : false);
 
-  const onMouseLeave = () => setDropdown(false);
+  // const onMouseLeave = () => setDropdown(false);
 
-  // const manageRestaurants = (
-  //   <li className="nav-item nav-hover">
-  //     <NavLink
-  //       to="/restaurants/user-restaurants"
-  //       className="nav-links hidden"
-  //       onClick={closeMobileMenu}
-  //       activeStyle={activeStyle}
-  //     >
-  //       Manage Restaurants
-  //     </NavLink>
-  //   </li>
-  // );
+  const manageRestaurants = (
+    <li className="nav-item nav-hover">
+      <NavLink
+        to="/restaurants/user-restaurants"
+        className="nav-links hidden"
+        onClick={closeMobileMenu}
+        activeStyle={activeStyle}
+      >
+        Manage Restaurants
+      </NavLink>
+    </li>
+  );
 
   return (
     <>
@@ -57,12 +57,12 @@ const Nav = ({ user }) => {
 
           <li className="nav-item nav-hover">
             <NavLink
-              to={user ? "/add-listing" : "/sign-in"}
+              to="/add-restaurant"
               className="nav-links"
               onClick={closeMobileMenu}
               activeStyle={activeStyle}
             >
-              Sign-In
+              Add-Restaurant
             </NavLink>
           </li>
 
@@ -76,6 +76,19 @@ const Nav = ({ user }) => {
               About
             </NavLink>
           </li>
+
+          <li className="nav-item nav-hover">
+            <NavLink
+              to={user ? "/add-listing" : "/sign-in"}
+              className="nav-links"
+              onClick={closeMobileMenu}
+              activeStyle={activeStyle}
+            >
+              Sign-In
+            </NavLink>
+          </li>
+
+          
 
           {user && manageRestaurants}
 
@@ -92,8 +105,8 @@ const Nav = ({ user }) => {
 
         <li
           className="nav-item login toggle"
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
+          // onMouseEnter={onMouseEnter}
+          // onMouseLeave={onMouseLeave}
         >
           <NavLink to="#" className="nav-links" onClick={closeMobileMenu}>
             {user ? "Profile " : "Log in "}

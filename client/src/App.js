@@ -2,21 +2,21 @@ import './App.css';
 import { Switch, Route, useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import About from "./Screens/About/About";
-import Layout from './components/shared/Layout/Layout';
+// import Layout from './components/shared/Layout/Layout';
 import Home from "./Screens/Home/Home";
 import RestaurantCreate from "./Screens/RestaurantCreate/RestaurantCreate";
 import RestaurantDetail from "./Screens/RestaurantDetail/RestaurantDetail";
 import RestaurantEdit from "./Screens/RestaurantEdit/RestaurantEdit";
 import Restaurants from "./Screens/Restaurants/Restaurants";
 import SignIn from "./Screens/SignIn/SignIn";
-import SignOut from "./Screens/SignOut/SignOut";
+// import SignOut from "./Screens/SignOut/SignOut";
 import SignUp from "./Screens/SignUp/SignUp";
 import UserRestaurants from "./Screens/UserRestaurants/UserRestaurants";
-import { verifyUser, registerUser, removeToken, loginUser } from "./services/user";
+import { verifyUser, registerUser, loginUser } from "./services/user";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const history = useHistory();
 
   useEffect(() => {
@@ -31,10 +31,10 @@ function App() {
     try {
       const userData = await loginUser(formData);
       setCurrentUser(userData);
-      setError(null);
+      // setError(null);
       history.push('/');
     } catch (e) {
-      setError("invalid login credentials");
+      // setError("invalid login credentials");
     }
   }
 
@@ -44,15 +44,15 @@ function App() {
       setCurrentUser(userData);
       history.push('/');
     } catch (e) {
-      setError("invalid sign up info")
+      // setError("invalid sign up info")
     }
   }
 
-  const handleLogout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem('authToken');
-    removeToken();
-  }
+  // const handleLogout = () => {
+  //   setCurrentUser(null);
+  //   localStorage.removeItem('authToken');
+  //   removeToken();
+  // }
 
 
   return (
