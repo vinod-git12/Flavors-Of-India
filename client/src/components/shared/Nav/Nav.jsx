@@ -19,18 +19,18 @@ const Nav = ({ user }) => {
 
   const onMouseLeave = () => setDropdown(false);
 
-  const manageRestaurants = (
-    <li className="nav-item nav-hover">
-      <NavLink
-        to="/restaurants/user-restaurants"
-        className="nav-links hidden"
-        onClick={closeMobileMenu}
-        activeStyle={activeStyle}
-      >
-        Manage Restaurants
-      </NavLink>
-    </li>
-  );
+  // const manageRestaurants = (
+  //   <li className="nav-item nav-hover">
+  //     <NavLink
+  //       to="/restaurants/user-restaurants"
+  //       className="nav-links hidden"
+  //       onClick={closeMobileMenu}
+  //       activeStyle={activeStyle}
+  //     >
+  //       Manage Restaurants
+  //     </NavLink>
+  //   </li>
+  // );
 
   return (
     <>
