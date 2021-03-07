@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import Dropdown from "../Dropdown/Dropdown";
 import "./Nav.css";
 
 const activeStyle = {
@@ -52,7 +51,7 @@ const Nav = ({ user }) => {
               onClick={closeMobileMenu}
               activeStyle={activeStyle}
             >
-              Buy
+              Restaurants
             </NavLink>
           </li>
 
@@ -63,7 +62,7 @@ const Nav = ({ user }) => {
               onClick={closeMobileMenu}
               activeStyle={activeStyle}
             >
-              Sell
+              Sign-In
             </NavLink>
           </li>
 
@@ -100,7 +99,7 @@ const Nav = ({ user }) => {
             {user ? "Profile " : "Log in "}
             <i className="fas fa-caret-down" />
           </NavLink>
-          {dropdown && <Dropdown user={user} />}
+          {/* {dropdown && <Dropdown user={user} />} */}
         </li>
       </nav>
     </>

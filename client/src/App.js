@@ -1,7 +1,8 @@
 import './App.css';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import About from "./Screens/About/About";
+import Layout from './components/shared/Layout/Layout';
 import Home from "./Screens/Home/Home";
 import RestaurantCreate from "./Screens/RestaurantCreate/RestaurantCreate";
 import RestaurantDetail from "./Screens/RestaurantDetail/RestaurantDetail";
@@ -11,54 +12,85 @@ import SignIn from "./Screens/SignIn/SignIn";
 import SignOut from "./Screens/SignOut/SignOut";
 import SignUp from "./Screens/SignUp/SignUp";
 import UserRestaurants from "./Screens/UserRestaurants/UserRestaurants";
-import { verifyUser } from "./services/user";
+import { verifyUser, registerUser, removeToken, loginUser } from "./services/user";
 
-const App = () => {
-  const [user, setUser] = useState(null);
-  const clearUser = () => setUser(null);
+function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [error, setError] = useState(null);
+  const history = useHistory();
+
   useEffect(() => {
-    const fetchUser = async () => {
-      const user = await verifyUser();
-      user ? setUser(user) : setUser(null);
-    };
-    fetchUser();
-  }, []);
+    const handleVerify = async () => {
+      const userData = await verifyUser();
+      setCurrentUser(userData)
+    }
+    handleVerify();
+  }, [])
+
+  const handleLogin = async (formData) => {
+    try {
+      const userData = await loginUser(formData);
+      setCurrentUser(userData);
+      setError(null);
+      history.push('/');
+    } catch (e) {
+      setError("invalid login credentials");
+    }
+  }
+
+  const handleRegister = async (formData) => {
+    try {
+      const userData = await registerUser(formData);
+      setCurrentUser(userData);
+      history.push('/');
+    } catch (e) {
+      setError("invalid sign up info")
+    }
+  }
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('authToken');
+    removeToken();
+  }
+
 
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <Home user={user} />
+          <Home user={currentUser} />
         </Route>
         <Route exact path="/sign-in">
-          <SignIn setUser={setUser} />
+          <SignIn handleLogin={handleLogin} />
+
         </Route>
-        <Route exact path="/sign-out">
-          <SignOut setUser={setUser} clearUser={clearUser} />
-        </Route>
+        {/* <Route exact path="/sign-out">
+          <SignOut setUser={setCurrentUser} clearUser={clearUser} />
+        </Route> */}
         <Route exact path="/sign-up">
-          <SignUp setUser={setUser} />
+          <SignUp handleRegister={handleRegister} />
         </Route>
         <Route exact path="/restaurants">
-          <Listings user={user} />
+          <Restaurants user={currentUser} />
         </Route>
         <Route exact path="/add-restaurant">
-          <ListingCreate user={user} />
+          <RestaurantCreate user={currentUser} />
         </Route>
         <Route exact path="/edit-restaurant/:id">
-          <ListingEdit user={user} />
+          <RestaurantEdit user={currentUser} />
         </Route>
         <Route exact path="/restaurant/:id">
-          <ListingDetail user={user} />
+          <RestaurantDetail user={currentUser} />
         </Route>
         <Route exact path="/about">
-          <About user={user} />
+          <About user={currentUser} />
         </Route>
         <Route exact path="/restaurant">
-          <Buy user={user} />
+          <Restaurants user={currentUser} />
         </Route>
         <Route exact path="/restaurants/user-restaurant">
-          <UserListings user={user} />
+          <UserRestaurants user={currentUser} />
         </Route>
       </Switch>
     </div>

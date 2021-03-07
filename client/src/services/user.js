@@ -1,6 +1,6 @@
-import api from "./apiConfig";
+import api from './api-config';
 
-export const signUp = async (credentials) => {
+export const loginUser = async (loginData) => {
   try {
     const resp = await api.post('/auth/login', { authentication: loginData })
     localStorage.setItem('authToken', resp.data.token);
@@ -9,51 +9,29 @@ export const signUp = async (credentials) => {
   } catch(e) {
     throw(e) 
   }
-};
+}
 
-export const signIn = async (credentials) => {
+export const registerUser = async (registerData) => {
   try {
-    const response = await api.post("/users/sign-in", credentials);
-    localStorage.setItem("token", response.data.token);
-    const user = jwtDecode(response.data.token);
-    return user;
-  } catch (error) {
-    throw error;
+    const resp = await api.post('/users/', { user: registerData })
+    localStorage.setItem('authToken', resp.data.token);
+    api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`
+    return resp.data.user
+  } catch(e) {
+    throw(e)
   }
-};
-
-export const signOut = async (user) => {
-  try {
-    localStorage.clear();
-    return true;
-  } catch (error) {
-    throw error;
-  }
-};
+}
 
 export const verifyUser = async () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('authToken');
   if (token) {
-    const response = await api.get("/users/verify");
-    return response.data;
+    api.defaults.headers.common.authorization = `Bearer ${token}`
+    const resp = await api.get('/auth/verify');
+    return resp.data
   }
-  return false;
-};
+  return null
+}
 
-export const getUsers = async () => {
-  try {
-    const response = await api.get("users/");
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getUser = async (id) => {
-  try {
-    const response = await api.get(`users/${id}`);
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-};
+export const removeToken = () => {
+  api.defaults.headers.common.authorization = null
+}

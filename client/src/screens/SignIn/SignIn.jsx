@@ -1,107 +1,54 @@
-import Layout from "../../components/shared/Layout/Layout";
-import "./SignIn.css";
-import React, { useState } from "react";
-import { signIn } from "../../services/user";
-import { useHistory } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const SignIn = (props) => {
-  const history = useHistory();
+export default function Login(props) {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  })
+  const { username, password } = formData;
+  const { handleLogin, error } = props;
 
-  const [form, setForm] = useState({
-    username: "",
-    password: "",
-    isError: false,
-    errorMsg: "",
-  });
-
-  const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  const onSignIn = (event) => {
-    event.preventDefault();
-
-    const { setUser } = props;
-
-    signIn(form)
-      .then((user) => {
-        setUser(user);
-      })
-      .then(() => history.push("/"))
-      .catch((error) => {
-        console.error(error);
-        setForm({
-          isError: true,
-          errorMsg: "Invalid Credentials",
-          username: "",
-          password: "",
-        });
-      });
-  };
-
-  const renderError = () => {
-    const toggleForm = form.isError ? "danger" : "";
-    if (form.isError) {
-      return (
-        <button id="sign-in-button" type="submit" className={toggleForm}>
-          {form.errorMsg}
-        </button>
-      );
-    } else {
-      return (
-        <button id="sign-in-button" type="submit">
-          Sign In
-        </button>
-      );
-    }
-  };
-
-  const { username, password } = form;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
 
   return (
-    <Layout>
-      <div className="background">
-        <div className="page-container">
-          <h3>Sign In</h3>
-          <div className="form-container1">
-            <form onSubmit={onSignIn}>
-              <label className="label-sign">Username</label>
-              <input
-                className="sign-in-input"
-                required
-                type="text"
-                name="username"
-                value={username}
-                placeholder="Enter Username"
-                onChange={handleChange}
-                autoFocus
-              />
-              <label className="label-sign">Password</label>
-              <input
-                className="sign-in-input"
-                required
-                name="password"
-                value={password}
-                type="password"
-                placeholder="Password"
-                onChange={handleChange}
-              />
-              {renderError()}
-            </form>
-            <div className="signup">
-              <NavLink to="/sign-up" className="register">
-                <h4>Dont have an Account? Register</h4>
-              </NavLink>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Layout>
-  );
-};
-
-export default SignIn;
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      handleLogin(formData);
+    }}>
+      <h3>Login</h3>
+      {
+        error &&
+        <p>{error}</p>
+      }
+      <label>
+        Username:
+        <input
+          type='text'
+          name='username'
+          value={username}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <label>
+        Password:
+        <input
+          type='password'
+          name='password'
+          value={password}
+          onChange={handleChange}
+        />
+      </label>
+      <br />
+      <Link to='/sign-up'>Register</Link>
+      <button >Submit</button>
+    </form>
+  )
+}
