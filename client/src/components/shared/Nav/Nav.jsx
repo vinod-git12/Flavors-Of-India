@@ -57,12 +57,12 @@ const Nav = ({ user }) => {
 
           <li className="nav-item nav-hover">
             <NavLink
-              to="/add-restaurant"
+              to="/add-restaurantsrestaurants"
               className="nav-links"
               onClick={closeMobileMenu}
               activeStyle={activeStyle}
             >
-              Add-Restaurant
+              Add-Restaurants
             </NavLink>
           </li>
 

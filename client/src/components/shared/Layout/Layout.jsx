@@ -4,10 +4,15 @@ import Nav from "../Nav/Nav";
 import "./Layout.css";
 
 const Layout = (props) => {
+  const { currentUser, handleLogout } = props;
+
   return (
     <div className="layout-children">
       <div className="layout-content">
-        <Nav user={props.user} />
+        <Nav user={props.user}
+          currentUser={currentUser}
+          handleLogout={handleLogout}
+        />
         {/* screens go below */}
         {props.children}
       </div>

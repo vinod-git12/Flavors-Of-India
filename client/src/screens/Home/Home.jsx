@@ -1,13 +1,17 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useState } from "react-router-dom";
 import Layout from "../../components/shared/Layout/Layout";
 import "./Home.css";
 
 const Home = (props) => {
   const history = useHistory();
+  const { currentUser, handleLogout } = props;
 
   return (
-    <Layout user={props.user}>
+    <Layout user={props.user}
+      currentUser={currentUser}
+      handleLogout={handleLogout}
+    >
       <div>
         <button
           className="get-started"
