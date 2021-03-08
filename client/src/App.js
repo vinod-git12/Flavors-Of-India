@@ -12,6 +12,7 @@ import SignIn from "./Screens/SignIn/SignIn";
 import SignUp from "./Screens/SignUp/SignUp";
 import UserRestaurants from "./Screens/UserRestaurants/UserRestaurants";
 import { verifyUser, registerUser, loginUser } from "./services/user";
+import { createRestaurant } from "./services/restaurants";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -54,7 +55,7 @@ function App() {
     // removeToken();
   }
 
-  const createRestaurant = async (restaurantData) => {
+  const createSubmit = async (restaurantData) => {
     const newRestaurant = await createRestaurant(restaurantData);
     setAllRestaurants(prevState => ([
       ...prevState,
@@ -92,7 +93,8 @@ function App() {
           </Route>
           
         <Route exact path="/add-restaurant">
-          <RestaurantCreate currentUser={currentUser} />
+            <RestaurantCreate currentUser={currentUser}
+              createSubmit={ createSubmit}/>
           </Route>
           
         <Route exact path="/edit-restaurant/:id">

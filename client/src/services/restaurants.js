@@ -18,9 +18,9 @@ export const getRestaurant = async (id) => {
   }
 };
 
-export const createRestaurant = async (restaurant) => {
+export const createRestaurant = async (formData) => {
   try {
-    const response = await api.post("/restaurants", restaurant);
+    const response = await api.post("/restaurants", { restaurant: formData });
     return response.data;
   } catch (error) {
     throw error;
@@ -28,9 +28,9 @@ export const createRestaurant = async (restaurant) => {
 };
 // convert to put to pass in userId
 
-export const updateRestaurant = async (id, restaurant) => {
+export const updateRestaurant = async (id, formData) => {
   try {
-    const response = await api.put(`/restaurants/${id}`, restaurant);
+    const response = await api.put(`/restaurants/${id}`, { restaurant: formData });
     return response.data;
   } catch (error) {
     throw error;

@@ -1,30 +1,26 @@
 import Layout from "../../components/shared/Layout/Layout";
 import "./RestaurantCreate.css";
 import React, { useState } from "react";
-import { createRestaurant } from "../../services/restaurants";
 import { Redirect } from "react-router-dom";
 
 export default function RestaurantCreate(props) {
-  const [restaurant, setRestaurant] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     img_url: "",
     address: "",
   });
 
-  const { name, img_url, address } = restaurant;
+  const { name, img_url, address } = formData;
+  const { createSubmit } = props;
 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setRestaurant(prevState => ({
-      ...prevState,
+    setFormData(formData => ({
+      ...formData,
       [name]: value,
     }));
   };
-
-    const handleSubmit = async (event) => {
-      event.preventDefault();
-    };
 
     
   return (
@@ -32,7 +28,11 @@ export default function RestaurantCreate(props) {
       <div className="background">
         <div className="create-container">
           <h3>Create A Restaurant</h3>
-          <form onSubmit={handleSubmit} className="create-form">
+
+          <form onSubmit={(event) => {
+            event.preventDefault();
+            createSubmit(formData)
+          }} className="create-form">
             <label className="label-create">Name of Restaurant</label>
             <input
               className="create-input"
