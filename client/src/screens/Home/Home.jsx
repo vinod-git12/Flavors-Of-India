@@ -8,10 +8,7 @@ const Home = (props) => {
   const { currentUser, handleLogout } = props;
 
   return (
-    <Layout user={props.user}
-      currentUser={currentUser}
-      handleLogout={handleLogout}
-    >
+    
       <div>
         <button
           className="get-started"
@@ -20,7 +17,7 @@ const Home = (props) => {
           Get Started
             </button>
       </div>
-    </Layout>
+    
   )
 }
   

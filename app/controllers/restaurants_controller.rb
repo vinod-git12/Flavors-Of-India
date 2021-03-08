@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurants, only: :show
+  before_action :authorize_request, only: [:create, :update, :destroy]
   before_action :set_restaurant, only: [:show, :update, :destroy]
 
   # GET /restaurants

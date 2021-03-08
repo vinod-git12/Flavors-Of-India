@@ -21,7 +21,7 @@ export default function Register(props) {
   }
 
   return (
-    <Layout>
+  
       <div className="background">
     <div className="form-container">
     <form onSubmit={(e) => {
@@ -63,6 +63,6 @@ export default function Register(props) {
       </form>
         </div>
         </div>
-    </Layout>
+    
   )
 }

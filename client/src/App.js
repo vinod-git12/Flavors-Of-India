@@ -17,6 +17,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState(null);
   const history = useHistory();
+  const [allRestaurants, setAllRestaurants] = useState("")
 
   useEffect(() => {
     const handleVerify = async () => {
@@ -53,6 +54,18 @@ function App() {
     // removeToken();
   }
 
+  const createRestaurant = async (restaurantData) => {
+    const newRestaurant = await createRestaurant(restaurantData);
+    setAllRestaurants(prevState => ([
+      ...prevState,
+      newRestaurant
+    ]));
+    history.push('/restaurants');
+  }
+
+
+
+
 
   return (
     <div className="App">
@@ -61,9 +74,6 @@ function App() {
         handleLogout={handleLogout}
         >
       <Switch>
-        <Route exact path="/">
-          <Home currentUser={currentUser} handleLogout={handleLogout}/>
-          </Route>
           
         <Route exact path="/sign-in">
           <SignIn handleLogin={handleLogin} />
@@ -72,6 +82,10 @@ function App() {
         <Route exact path="/sign-up">
           <SignUp handleRegister={handleRegister} />
           </Route>
+          
+          <Route path="/restaurants/user-restaurant">
+            <UserRestaurants currentUser={currentUser} />
+            </Route>
           
         <Route exact path="/restaurants">
           <Restaurants currentUser={currentUser} />
@@ -85,22 +99,23 @@ function App() {
           <RestaurantEdit currentUser={currentUser} />
           </Route>
           
-        <Route exact path="/restaurant/:id">
+        <Route path="/restaurant/:id">
           <RestaurantDetail currentUser={currentUser} />
           </Route>
           
-        <Route exact path="/about">
+        <Route path="/about">
           <About currentUser={currentUser} />
           </Route>
           
-        <Route exact path="/restaurant">
+        {/* <Route path="/restaurant">
           <Restaurants currentUser={currentUser} />
-          </Route>
+          </Route> */}
           
-        <Route exact path="/restaurants/user-restaurant">
-          <UserRestaurants currentUser={currentUser} />
-          </Route>
           
+        <Route path="/">
+          <Home currentUser={currentUser} handleLogout={handleLogout}/>
+          </Route>
+
         </Switch>
         </Layout>
     </div>

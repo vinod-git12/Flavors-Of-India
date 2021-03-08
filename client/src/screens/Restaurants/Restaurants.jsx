@@ -40,13 +40,12 @@ const Restaurants = (props) => {
   ));
 
   return (
-    <Layout user={props.user}>
       <div>
         <Search onSubmit={handleSubmit} onChange={handleSearch} />
         {/* <Restaurants /> */}
         <div className="restaurantcard">{restaurantsJSX}</div>
       </div>
-    </Layout>
+    
   );
 };
 

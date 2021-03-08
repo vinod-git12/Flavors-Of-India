@@ -19,7 +19,7 @@ export default function Login(props) {
   }
 
   return (
-    <Layout>
+    
       <div className="page-container">
         <h3>
           Sign In
@@ -59,6 +59,5 @@ export default function Login(props) {
           </form>
           </div>
       </div>
-      </Layout>
   )
 }
