@@ -7,17 +7,12 @@ const activeStyle = {
   color: "#f4a261",
 };
 
-const Nav = ({ user }) => {
+const Nav = (props) => {
   const [isClicked, setIsClicked] = useState(false);
-  // const [dropdown, setDropdown] = useState(false);
 
   const handleIsClicked = () => setIsClicked(!isClicked);
   const closeMobileMenu = () => setIsClicked(false);
 
-  // const onMouseEnter = () =>
-  //   setDropdown(window.innerWidth > 960 ? true : false);
-
-  // const onMouseLeave = () => setDropdown(false);
 
   const manageRestaurants = (
     <li className="nav-item nav-hover">
@@ -57,7 +52,7 @@ const Nav = ({ user }) => {
 
           <li className="nav-item nav-hover">
             <NavLink
-              to="/add-restaurantsrestaurants"
+              to={props.currentUser ? "/add-restaurant" : "/sign-in"}
               className="nav-links"
               onClick={closeMobileMenu}
               activeStyle={activeStyle}
@@ -77,43 +72,35 @@ const Nav = ({ user }) => {
             </NavLink>
           </li>
 
-          <li className="nav-item nav-hover">
-            <NavLink
-              to={user ? "/add-listing" : "/sign-in"}
-              className="nav-links"
-              onClick={closeMobileMenu}
-              activeStyle={activeStyle}
-            >
-              Sign-In
-            </NavLink>
-          </li>
-
-          
-
-          {user && manageRestaurants}
+          {props.currentUser && manageRestaurants}
 
           <li className="nav-item">
             <NavLink
-              to={user ? "/sign-out" : "/sign-in"}
+              to={props.currentUser ? "/sign-out" : "/sign-in"}
               className="nav-links-mobile"
               onClick={closeMobileMenu}
             >
-              {user ? "Sign out" : "Log in"}
+              {props.currentUser ? "Sign out" : "Sign In"}
             </NavLink>
           </li>
         </ul>
 
         <li
           className="nav-item login toggle"
-          // onMouseEnter={onMouseEnter}
-          // onMouseLeave={onMouseLeave}
         >
-          <NavLink to="#" className="nav-links" onClick={closeMobileMenu}>
-            {user ? "Profile " : "Log in "}
+          <NavLink to="/sign-in" className="nav-links" onClick={closeMobileMenu}>
+            {props.currentUser ? props.currentUser.username : "Sign In "}
             <i className="fas fa-caret-down" />
           </NavLink>
-          {/* {dropdown && <Dropdown user={user} />} */}
         </li>
+
+        {props.currentUser && 
+          <li>
+          <button onClick={props.handleLogout}>
+            Log Out
+          </button>
+          </li>
+        }
       </nav>
     </>
   );

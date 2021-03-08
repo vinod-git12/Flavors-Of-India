@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Layout from '../../components/shared/Layout/Layout';
 
 export default function Login(props) {
   const [formData, setFormData] = useState({
@@ -18,6 +19,12 @@ export default function Login(props) {
   }
 
   return (
+    <Layout>
+      <div className="page-container">
+        <h3>
+          Sign In
+        </h3>
+        <div className="form-container">
     <form onSubmit={(e) => {
       e.preventDefault();
       handleLogin(formData);
@@ -49,6 +56,9 @@ export default function Login(props) {
       <br />
       <Link to='/sign-up'>Register</Link>
       <button >Submit</button>
-    </form>
+          </form>
+          </div>
+      </div>
+      </Layout>
   )
 }

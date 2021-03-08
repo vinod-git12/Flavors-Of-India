@@ -9,14 +9,11 @@ const Layout = (props) => {
   return (
     <div className="layout-children">
       <div className="layout-content">
-        <Nav user={props.user}
-          currentUser={currentUser}
+        <Nav currentUser={currentUser}
           handleLogout={handleLogout}
         />
-        {/* screens go below */}
         {props.children}
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };

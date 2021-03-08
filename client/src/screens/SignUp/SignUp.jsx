@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Layout from '../../components/shared/Layout/Layout';
+import "./SignUp.css";
+
 
 export default function Register(props) {
   const [formData, setFormData] = useState({
@@ -18,11 +21,14 @@ export default function Register(props) {
   }
 
   return (
+    <Layout>
+      <div className="background">
+    <div className="form-container">
     <form onSubmit={(e) => {
       e.preventDefault();
       handleRegister(formData);
     }}>
-      <h3>Register</h3>
+      <h3>Sign Up</h3>
       <label>
         Username:
         <input
@@ -54,6 +60,9 @@ export default function Register(props) {
       </label>
       <br />
       <button>Submit</button>
-    </form>
+      </form>
+        </div>
+        </div>
+    </Layout>
   )
 }
