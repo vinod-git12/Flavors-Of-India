@@ -14,11 +14,12 @@ import UserRestaurants from "./Screens/UserRestaurants/UserRestaurants";
 import { verifyUser, registerUser, loginUser } from "./services/user";
 import { createRestaurant, updateRestaurant, deleteRestaurant } from "./services/restaurants";
 import RestaurantCard from "./components/RestaurantCard/RestaurantCard";
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState(null);
   const history = useHistory();
-  const [allRestaurants, setAllRestaurants] = useState("")
+  const [allRestaurants, setAllRestaurants] = useState([])
 
   useEffect(() => {
     const handleVerify = async () => {
@@ -67,12 +68,11 @@ function App() {
   const updateSubmit = async (id, formData) => {
     const updatedRestaurant = await updateRestaurant(id, formData);
     setAllRestaurants(prevState => prevState.map(restaurant => {
-        return restaurant.id === Number(id) ? updatedRestaurant : restaurant
-      })
+      return restaurant.id === Number(id) ? updatedRestaurant : restaurant
+    })
     )
     history.push('/restaurants');
   }
-
   
 
   return (
@@ -105,7 +105,8 @@ function App() {
           </Route>
           
         <Route exact path="/edit-restaurant/:id">
-          <RestaurantEdit currentUser={currentUser} />
+            <RestaurantEdit currentUser={currentUser}
+          updateSubmit={updateSubmit}  />
           </Route>
           
         <Route path="/restaurants/:id">
@@ -129,6 +130,7 @@ function App() {
         </Layout>
     </div>
   );
-};
+  };
+
 
 export default App;

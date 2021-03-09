@@ -1,84 +1,102 @@
-// import React from 'react'
-// import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import Layout from "../../components/shared/Layout/Layout";
+import React from 'react'
+import { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import Layout from "../../components/shared/Layout/Layout";
+import { getRestaurant, getRestaurants } from "../../services/restaurants";
 
 
-// export default function RestaurantEdit() {
-//   const [formData, setFormData] = useState({
-//     name: ''
-//   });
-//   const { name } = formData;
-//   const { restaurants, handleUpdate } = props;
-//   const { id } = useParams();
 
-//   useEffect(() => {
-//     const prefillFormData = () => {
-//       const restaurantChange = restaurants.find((restaurant) => restaurant.id === Number(id));
-//       setFormData({
-//         name: restaurantChange.name
-//       });
-//     }
-//     if (restaurants.length) {
-//       prefillFormData();
-//     }
-//   }, [restaurants, id])
+export default function RestaurantEdit(props) {
+  const [formData, setFormData] = useState({
+    name: '',
+    img_url: "",
+    address: ""
+  });
+  const { name, img_url, address } = formData;
+  const { id } = useParams();
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData(prevState => ({
-//       ...prevState,
-//       [name]: value
-//     }))
-  
+  const history = useHistory()
+  const { updateSubmit} = props
 
-//   return (
-//     <Layout currentUser={props.currentUser}>
-//       <div className="restaurant-edit">
-//         <div className="edit-image-container">
-//           <img
-//             className="edit-restaurant-image"
-//             src={restaurant.img_url}
-//             alt={restaurant.name}
-//             />
-//           <form className="edit-form" onSubmit={() => {
-//             // event.preventDefault();
-//             Submit(formData)
-//           }}>
-//             <input
-//               className="input-name"
-//               required
-//               type="text"
-//               name="name"
-//               value={restaurant.name}
-//               placeholder="Name of Restaurant"
-//               onChange={handleChange}
-//               autoFocus
-//             />
+  const [restaurants, setRestaurants] = useState([]);
+    useEffect(() => {
+    const fetchRestaurant = async () => {
+      const restaurantData = await getRestaurants();
+      setRestaurants(restaurantData);
+    }
+    fetchRestaurant();
+  }, [id])
+
+  useEffect(() => {
+    const prefillFormData = () => {
+      const restaurantChange = restaurants.find((restaurant) => restaurant.id === Number(id));
+      setFormData({
+        name: restaurantChange.name,
+        address: restaurantChange.address,
+        img_url: restaurantChange.img_url
+      });
+    }
+    if (restaurants.length) {
+      prefillFormData();
+    }
+  }, [restaurants, id])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+    return (
+      // <Layout currentUser={props.currentUser}>
+      //   <div className="restaurant-edit">
+      //     <div className="edit-image-container">
+      //       <img
+      //         className="edit-restaurant-image"
+      //         src={restaurant.img_url}
+      //         alt={restaurant.name}
+      //         />
+      <div className="form-container">
+        <form className="edit-form" onSubmit={(e) => {
+          e.preventDefault();
+          updateSubmit(id, formData)
+          history.push('/restaurants')
+        }}>
+          <input
+            className="input-name"
+            required
+            type="text"
+            name="name"
+            value={name}
+            placeholder="Name of Restaurant"
+            onChange={handleChange}
+            autoFocus
+          />
         
-//             <input
-//               className="create-address"
-//               required
-//               type="text"
-//               name="address"
-//               value={address}
-//               placeholder="address"
-//               onChange={handleChange}
-//             />
-//             <input
-//               className="create-input"
-//               required
-//               name="img_url"
-//               value={restaurant.img_url}
-//               type="text"
-//               placeholder="Image-url"
-//               onChange={handleChange}
-//             />
-//             <button id="save-button" type="submit">
-//                Update Restaurant
-//             </button>
-//           </form>
-//         </div>
-//     </Layout>
-//   );
-// };
+          <input
+            className="create-address"
+            required
+            type="text"
+            name="address"
+            value={address}
+            placeholder="address"
+            onChange={handleChange}
+          />
+          <input
+            className="create-input"
+            required
+            name="img_url"
+            value={img_url}
+            type="text"
+            placeholder="Image-url"
+            onChange={handleChange}
+          />
+          <button id="save-button" type="submit">
+            Update Restaurant
+            </button>
+        </form>
+      </div>
+    );
+  };

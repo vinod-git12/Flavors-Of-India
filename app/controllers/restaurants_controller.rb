@@ -37,7 +37,8 @@ class RestaurantsController < ApplicationController
 
   # DELETE /restaurants/1
   def destroy
-    @review = Review.find(params[:review_id])
+    # @review = Review.find(params[:review_id])
+    @restaurant = @current_user.restaurants.find(params[:id])
     @restaurant.destroy
   end
 

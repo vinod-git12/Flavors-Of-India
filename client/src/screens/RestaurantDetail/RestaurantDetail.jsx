@@ -28,7 +28,7 @@ export default function RestaurantDetail(props) {
             <h3>{restaurant.name}</h3>
             <img src={restaurant.img_url} alt={restaurant.name} />
             <p>{restaurant.address}</p> 
-            <Link to={`/edit-restaurant/:id`}><button>Update</button></Link>
+            <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
            {/* <button onClick={() => removeRestaurant(restaurant.id)}>Delete</button> */}
           </div>
         }
