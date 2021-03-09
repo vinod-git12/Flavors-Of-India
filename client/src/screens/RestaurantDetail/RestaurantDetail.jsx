@@ -2,13 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import Layout from "../../components/shared/Layout/Layout";
 import { getRestaurant } from "../../services/restaurants";
-// import 
+import { getAllReviews } from '../../services/reviews';
 
 
 export default function RestaurantDetail(props) {
   const [restaurant, setRestaurant] = useState(null);
   const { removeSubmit } = props;
-  // useState {reviews} = null
+  const [reviews, setReviews] = useState(null);
+  const [reviewData, setReviewData] = useState({
+    review: '',
+    user_id: "",
+    post_id: ""
+  });
 
   const { id } = useParams();
 
@@ -20,7 +25,15 @@ export default function RestaurantDetail(props) {
     fetchRestaurant();
   }, [id])
 
-  // useeffect fetchreviews
+  // useeffect for fetchReviews
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const reviewData = await getAllReviews(id)
+      setReviews(reviewData)
+    }
+    fetchReviews();
+    }, [id])
+
 
     console.log(restaurant)
   return (
