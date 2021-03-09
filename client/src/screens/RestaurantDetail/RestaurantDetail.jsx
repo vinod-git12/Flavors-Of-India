@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import Layout from "../../components/shared/Layout/Layout";
 import { getRestaurant } from "../../services/restaurants";
+// import 
 
 
 export default function RestaurantDetail(props) {
   const [restaurant, setRestaurant] = useState(null);
   const { removeSubmit } = props;
+  // useState {reviews} = null
 
   const { id } = useParams();
 
@@ -17,6 +19,9 @@ export default function RestaurantDetail(props) {
     }
     fetchRestaurant();
   }, [id])
+
+  // useeffect fetchreviews
+
     console.log(restaurant)
   return (
     <Layout>
@@ -36,3 +41,4 @@ export default function RestaurantDetail(props) {
     </Layout>
   )
 }
+

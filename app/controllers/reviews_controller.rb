@@ -3,9 +3,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews
   def index
-    @reviews = Review.all
-
-    render json: @reviews
+    restaurant = Restaurant.find(params[:restaurant_id])
+    @reviews = restaurant.reviews 
+    render json: @reviews, include: :user
   end
 
   # GET /reviews/1
