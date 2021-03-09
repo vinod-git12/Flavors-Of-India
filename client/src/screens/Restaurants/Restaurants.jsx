@@ -31,7 +31,8 @@ const Restaurants = (props) => {
 
   const restaurantsJSX = queriedRestaurants.map((restaurant, index) => (
     <RestaurantCard
-      id={restaurant._id}
+      restaurant={restaurant}
+      id={restaurant.id}
       name={restaurant.name}
       img_url={restaurant.img_url}
       address={restaurant.address}

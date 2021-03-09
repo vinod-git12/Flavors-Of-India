@@ -11,10 +11,9 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1
   def show
-    @review = Review.find(params[:review_id])
-    render json: @restaurant, include: :reviews
+    @restaurant = Restaurant.find(params[:id])
+    render json: @restaurant
   end
-
   # POST /restaurants
   def create
     @restaurant = Restaurant.new(restaurant_params)

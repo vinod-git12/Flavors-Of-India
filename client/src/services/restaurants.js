@@ -37,7 +37,7 @@ export const updateRestaurant = async (id, formData) => {
   }
 };
 
-export const deleteListing = async (id) => {
+export const deleteRestaurant = async (id) => {
   try {
     const response = await api.delete(`/restaurants/${id}`);
     return response.data;
