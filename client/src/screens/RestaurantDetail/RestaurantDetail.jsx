@@ -34,8 +34,6 @@ export default function RestaurantDetail(props) {
     fetchReviews();
     }, [id])
 
-
-    console.log(restaurant)
   return (
     <Layout>
       <div className="restaurant-details">

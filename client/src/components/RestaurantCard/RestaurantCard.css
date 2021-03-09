@@ -1,0 +1,22 @@
+.restaurantcard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 60px;
+  margin: 0px;
+}
+
+.restaurant-div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-decoration: none;
+}
+
+.img-restaurant {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  transition: transform 250ms ease-in-out;
+}
