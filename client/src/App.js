@@ -20,6 +20,7 @@ function App() {
   const [error, setError] = useState(null);
   const history = useHistory();
   const [allRestaurants, setAllRestaurants] = useState([])
+  const [updateToggle, setUpdateToggle] = useState(false)
 
   useEffect(() => {
     const handleVerify = async () => {
@@ -71,6 +72,13 @@ function App() {
       return restaurant.id === Number(id) ? updatedRestaurant : restaurant
     })
     )
+    setUpdateToggle(prevState => !prevState)
+    history.push('/restaurants');
+  }
+
+  const removeSubmit = async (id) => {
+    await deleteRestaurant(id);
+    setAllRestaurants(prevState => prevState.filter(restaurant => restaurant.id !== id));
     history.push('/restaurants');
   }
   
@@ -96,7 +104,8 @@ function App() {
             </Route>
           
         <Route exact path="/restaurants">
-          <Restaurants currentUser={currentUser} />
+            <Restaurants currentUser={currentUser}
+          updateToggle={updateToggle}  />
           </Route>
           
         <Route exact path="/add-restaurant">
@@ -110,7 +119,8 @@ function App() {
           </Route>
           
         <Route path="/restaurants/:id">
-          <RestaurantDetail currentUser={currentUser} />
+            <RestaurantDetail currentUser={currentUser}
+              removeSubmit={removeSubmit}  />
           </Route>
           
         <Route path="/about">

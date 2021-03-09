@@ -6,7 +6,7 @@ import RestaurantCard from "../../components/RestaurantCard/RestaurantCard";
 import Search from "../../components/Search/Search";
 import "../../components/Search/Search.css";
 
-const Restaurants = (props) => {
+const Restaurants = ({updateToggle}) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [queriedRestaurants, setQueriedRestaurants] = useState([]);
 
@@ -17,7 +17,7 @@ const Restaurants = (props) => {
       setQueriedRestaurants(restaurants);
     };
     fetchRestaurants();
-  }, []);
+  }, [updateToggle]);
 
 
   const handleSearch = (e) => {

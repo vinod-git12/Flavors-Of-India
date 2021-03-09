@@ -6,7 +6,7 @@ import { getRestaurant } from "../../services/restaurants";
 
 export default function RestaurantDetail(props) {
   const [restaurant, setRestaurant] = useState(null);
-  const { getRestaurants } = props;
+  const { removeSubmit } = props;
 
   const { id } = useParams();
 
@@ -29,7 +29,7 @@ export default function RestaurantDetail(props) {
             <img src={restaurant.img_url} alt={restaurant.name} />
             <p>{restaurant.address}</p> 
             <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
-           {/* <button onClick={() => removeRestaurant(restaurant.id)}>Delete</button> */}
+           <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
           </div>
         }
       </div>

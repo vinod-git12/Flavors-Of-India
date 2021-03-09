@@ -27,7 +27,7 @@ class RestaurantsController < ApplicationController
 
   # PATCH/PUT /restaurants/1
   def update
-    @restaurant = @current_user.restaurants.find(params[:id])
+    # @restaurant = @current_user.restaurants.find(params[:id])
     if @restaurant.update(restaurant_params)
       render json: @restaurant
     else
