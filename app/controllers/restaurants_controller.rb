@@ -6,13 +6,13 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
 
-    render json: @restaurants
+    render json: @restaurants, include: :reviews
   end
 
   # GET /restaurants/1
   def show
     @restaurant = Restaurant.find(params[:id])
-    render json: @restaurant
+    render json: @restaurant, include: :reviews
   end
   # POST /restaurants
   def create

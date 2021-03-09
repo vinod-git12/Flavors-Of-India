@@ -8,12 +8,12 @@ import { getAllReviews } from '../../services/reviews';
 export default function RestaurantDetail(props) {
   const [restaurant, setRestaurant] = useState(null);
   const { removeSubmit } = props;
-  const [reviews, setReviews] = useState(null);
-  const [reviewData, setReviewData] = useState({
-    review: '',
-    user_id: "",
-    post_id: ""
-  });
+  // const [reviews, setReviews] = useState(null);
+  // const [reviewData, setReviewData] = useState({
+  //   review: '',
+  //   user_id: "",
+  //   post_id: ""
+  // });
 
   const { id } = useParams();
 
@@ -26,13 +26,13 @@ export default function RestaurantDetail(props) {
   }, [id])
 
   // useeffect for fetchReviews
-  useEffect(() => {
-    const fetchReviews = async () => {
-      const reviewData = await getAllReviews(id)
-      setReviews(reviewData)
-    }
-    fetchReviews();
-    }, [id])
+  // useEffect(() => {
+  //   const fetchReviews = async () => {
+  //     const reviewData = await getAllReviews(id)
+  //     setReviews(reviewData)
+  //   }
+  //   fetchReviews();
+  //   }, [id])
 
   return (
     <Layout>
@@ -43,7 +43,12 @@ export default function RestaurantDetail(props) {
             
             <h3>{restaurant.name}</h3>
             <img src={restaurant.img_url} alt={restaurant.name} />
-            <p>{restaurant.address}</p> 
+            <p>{restaurant.address}</p>
+            {
+              restaurant.reviews.map((review) => {
+                return <h3>{ review.content}</h3>
+              })
+            }
             <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
            <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
           </div>

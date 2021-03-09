@@ -7,25 +7,25 @@
   padding: 15px;
 }
 
-/* h3 {
+h3 {
   text-align: center;
   font-weight: 200;
   font-size: 2em;
   margin-top: 10px;
   margin-bottom: 1em;
   color: #34495e;
-} */
+}
 
-/* .form-container1 {
+.form-container1 {
   padding-top: 20px;
-} */
+}
 
 .sign-in-input[type="text"],
 .sign-in-input[type="password"],
 .sign-in-input[type="email"],
 #sign-in-button {
   width: 80%;
-  margin-top: 1.7rem;
+  margin-top: .7rem;
   margin-left: 10%;
   margin-bottom: 25px;
   height: 40px;

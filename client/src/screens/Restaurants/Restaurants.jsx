@@ -29,7 +29,7 @@ const Restaurants = ({updateToggle}) => {
 
   const handleSubmit = (e) => e.preDefault();
 
-  const restaurantsJSX = queriedRestaurants.map((restaurant, index) => (
+  const restaurantsJSX = queriedRestaurants.map((restaurant, index, review) => (
     <RestaurantCard
       restaurant={restaurant}
       id={restaurant.id}
