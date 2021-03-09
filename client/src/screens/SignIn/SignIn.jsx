@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from '../../components/shared/Layout/Layout';
+import "./SignIn.css";
+
 
 export default function Login(props) {
   const [formData, setFormData] = useState({
@@ -19,22 +21,19 @@ export default function Login(props) {
   }
 
   return (
-    
+      <div className="background">
       <div className="page-container">
-        <h3>
-          Sign In
-        </h3>
         <div className="form-container">
     <form onSubmit={(e) => {
       e.preventDefault();
       handleLogin(formData);
     }}>
-      <h3>Login</h3>
+      <h3>Sign In</h3>
       {
         error &&
         <p>{error}</p>
       }
-      <label>
+      <label className="label-sign">
         Username:
         <input
           type='text'
@@ -44,7 +43,7 @@ export default function Login(props) {
         />
       </label>
       <br />
-      <label>
+      <label className="label-sign">
         Password:
         <input
           type='password'
@@ -54,10 +53,11 @@ export default function Login(props) {
         />
       </label>
       <br />
-      <Link to='/sign-up'>Register</Link>
-      <button >Submit</button>
+      <button >Submit</button><br></br>
+      <Link to='/sign-up' className="register">Register</Link>
           </form>
           </div>
+      </div>
       </div>
   )
 }

@@ -99,9 +99,9 @@ function App() {
           <SignUp handleRegister={handleRegister} />
           </Route>
           
-          <Route path="/restaurants/user-restaurant">
+          {/* <Route path="/restaurants/user-restaurant">
             <UserRestaurants currentUser={currentUser} />
-            </Route>
+            </Route> */}
           
         <Route exact path="/restaurants">
             <Restaurants currentUser={currentUser}
@@ -124,7 +124,7 @@ function App() {
           </Route>
           
         <Route path="/about">
-          <About currentUser={currentUser} />
+          {/* <About currentUser={currentUser} /> */}
           </Route>
           
         {/* <Route path="/restaurant">

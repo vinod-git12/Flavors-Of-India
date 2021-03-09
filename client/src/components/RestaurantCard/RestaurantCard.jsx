@@ -1,5 +1,5 @@
 import React from "react";
-// import ".RestaurantCard.css";
+import "./RestaurantCard.css";
 import { Link } from "react-router-dom";
 
 const RestaurantCard = (props) => {
