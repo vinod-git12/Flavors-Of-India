@@ -49,24 +49,24 @@ export default function RestaurantDetail(props) {
           </div>
 
           <div className="restaurant-info">
-          <div className="restaurant-deatils-container"> 
-            <h3>{restaurant.name}</h3>
-            <h2>{restaurant.address}</h2>
+          <div className="restaurant-details-container"> 
+            <h3 name-h3> <strong>Name: </strong>{restaurant.name}</h3>
+            <h2> Address : {restaurant.address}</h2>
           </div>
 
-          <div className="restaurant-reviews"><h2>Reviews</h2>
-            {
-              restaurant.reviews.map((review) => {
-                return <h3>{ review.content}</h3>
-              })
-            }
-          </div>
 
-          <div>
+          <div className="restaurant-updatedelete">
             <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
             <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
           </div>
       </div>
+          <div className="restaurant-reviews"><h3><strong>Reviews</strong></h3>
+            {
+              restaurant.reviews.map((review) => {
+                return <h4>{ review.content}</h4>
+              })
+            }
+          </div>
       
             </div>
             

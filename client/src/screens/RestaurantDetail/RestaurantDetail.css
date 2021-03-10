@@ -1,23 +1,41 @@
 .restaurant-image-container {
-  padding-top: 10em;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   padding: 10em 10em 8em;
-  margin: 0 auto;
-  flex: 1 1 30em;
-  width: 40em;
+  /* margin: 0 auto; */
   margin: 0 2em;
+  box-shadow: 5px;
+  margin-right: -20px;
+
+}
+
+.restaurant-image {
+  height: 600px;
+  width:600px;
+  border-radius: 35px;
+  box-shadow: 10px -9px 15px 3px, inset 0 0 20px rgba(38, 5, 146, 0.5);
 }
 
 .restaurant-details {
 display: flex;
 justify-content: space-between;
-border: 2px solid black;
 }
 
 .restaurant-info {
-  margin-top: 200px;
+  margin: 200px 0px 0px 0px;
+}
+
+.restaurant-details-container {
+  margin-right: -20px;
+}
+
+.restaurant-updatedelete {
+  display: flex;
+  justify-content: space-between;
+}
+
+.restaurant-reviews {
+  margin: 200px 100px;
 }
 
 
