@@ -37,15 +37,18 @@ export default function RestaurantDetail(props) {
 
   return (
     // <Layout>
-      <div className="restaurant-details">
+    <div>
         {
         restaurant &&
-        
+        <div className="restaurant-details">
+
           <div className="restaurant-image-container">
             <img src={restaurant.img_url}
             alt={restaurant.name}
             className="restaurant-image" />
-          
+          </div>
+
+          <div className="restaurant-info">
           <div className="restaurant-deatils-container"> 
             <h3>{restaurant.name}</h3>
             <h2>{restaurant.address}</h2>
@@ -63,9 +66,11 @@ export default function RestaurantDetail(props) {
             <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
             <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
           </div>
+      </div>
+      
+            </div>
             
-         </div>
-        }
+      }
       </div>
     // </Layout>
   )

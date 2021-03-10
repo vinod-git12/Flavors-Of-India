@@ -10,9 +10,14 @@
   margin: 0 2em;
 }
 
-.restaurant-details-container {
+.restaurant-details {
+display: flex;
+justify-content: space-between;
+border: 2px solid black;
+}
 
-  
+.restaurant-info {
+  margin-top: 200px;
 }
 
 

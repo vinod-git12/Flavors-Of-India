@@ -15,7 +15,7 @@ const Footer = () => {
           href="https://github.com/vinod-git12"
           target="blank"
         >
-          <i className="fab fa-github"></i> &nbsp; Vinod Kumar
+          <i className="fab fa-github"><img src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt=""></img> </i> &nbsp; Vinod Kumar
         </a>
        
       </div>

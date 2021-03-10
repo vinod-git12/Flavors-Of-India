@@ -6,7 +6,7 @@
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 4.5rem;
   bottom: 0;
@@ -17,15 +17,6 @@
   width: 120px;
 }
 
-/* .footer-text {
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 1em; */
-/* } */
 .footer-h4 {
   display: flex;
   justify-content: space-between;
