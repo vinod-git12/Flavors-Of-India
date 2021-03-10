@@ -21,14 +21,14 @@ export default function Login(props) {
   }
 
   return (
-      <div className="background">
-        <div className="page-container">
+      // <div className="background">
+        <div className="form-wrapper">
         <div className="form-container">
+          <h1>Sign In</h1>
           <form onSubmit={(e) => {
              e.preventDefault();
               handleLogin(formData);
         }}>
-        <h3>Sign In</h3>
         {
           error &&
           <p>{error}</p>
@@ -58,6 +58,6 @@ export default function Login(props) {
           </form>
           </div>
       </div>
-       </div>
+      //  </div>
   )
 }

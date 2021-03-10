@@ -35,7 +35,7 @@ h3 {
   height: 40px;
   border-radius: 4px;
   border: 1px solid rgb(214, 214, 214);
-  padding-left: 0.5em;
+  padding-left: 1.5em;
 }
 
 :focus {
@@ -53,8 +53,7 @@ h3 {
 }
 
 .label-sign {
-  margin-left: 2em;
-  margin-bottom: 1em;
+  margin-left: -2.99em;
 }
 
 .signup {
