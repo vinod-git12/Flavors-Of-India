@@ -31,7 +31,7 @@ const Nav = (props) => {
     <>
       <nav className="navbar">
         <NavLink to="/" className="navbar-logo">
-          <h1>Flavors of India</h1>
+          <img src="https://i.imgur.com/FYc76gD.png" alt="Flavors of India" className="logo"></img>
         </NavLink>
 
         <div className="menu-icon" onClick={handleIsClicked}>
