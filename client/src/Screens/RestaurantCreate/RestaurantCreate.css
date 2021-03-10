@@ -1,13 +1,18 @@
+.background {
+height: 600px;
+width: 500px;
+background-color: coral;
+
+}
+
 .create-container {
   padding-top: 20px;
   display: flex;
   flex-direction: column;
-}
-
-.create-container {
   margin: 0 auto;
   background: #cfe4e9;
-  max-width: 25em;
+  width: 45em;
+  height: 65em;
   border-radius: 3px;
   box-shadow: 3px 3px 10px rgb(216, 236, 246);
   padding: 25px;

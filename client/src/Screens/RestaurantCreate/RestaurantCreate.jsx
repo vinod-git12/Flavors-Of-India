@@ -47,7 +47,7 @@ export default function RestaurantCreate(props) {
         
             <label className="label-create">Address</label>
             <textarea
-              className="create-address"
+              className="create-input"
               required
               type="text"
               name="address"
