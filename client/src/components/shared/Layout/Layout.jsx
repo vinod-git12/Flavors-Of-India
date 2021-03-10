@@ -1,5 +1,5 @@
 import React from "react";
-// import Footer from "../Footer/Footer";
+import Footer from "../Footer/Footer";
 import Nav from "../Nav/Nav";
 import "./Layout.css";
 
@@ -13,6 +13,7 @@ const Layout = (props) => {
           handleLogout={handleLogout}
         />
         {props.children}
+        <Footer />
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export default function RestaurantCreate(props) {
 
     
   return (
-    <Layout currentUser={props.currentUser}>
+    // <Layout currentUser={props.currentUser}>
       <div className="background">
         <div className="create-container">
           <h3>Create A Restaurant</h3>
@@ -72,6 +72,6 @@ export default function RestaurantCreate(props) {
         </div>
       
     </div>
-    </Layout>
+    // </Layout>
   )
 }

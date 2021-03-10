@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import Layout from "../../components/shared/Layout/Layout";
 import { getRestaurant } from "../../services/restaurants";
 import { getAllReviews } from '../../services/reviews';
+import "./RestaurantDetail.css";
 
 
 export default function RestaurantDetail(props) {
@@ -35,26 +36,38 @@ export default function RestaurantDetail(props) {
   //   }, [id])
 
   return (
-    <Layout>
+    // <Layout>
       <div className="restaurant-details">
         {
-          restaurant &&
-          <div className="card">
-            
+        restaurant &&
+        
+          <div className="restaurant-image-container">
+            <img src={restaurant.img_url}
+            alt={restaurant.name}
+            className="restaurant-image" />
+          
+          <div className="restaurant-deatils-container"> 
             <h3>{restaurant.name}</h3>
-            <img src={restaurant.img_url} alt={restaurant.name} />
-            <p>{restaurant.address}</p>
+            <h2>{restaurant.address}</h2>
+          </div>
+
+          <div className="restaurant-reviews"><h2>Reviews</h2>
             {
               restaurant.reviews.map((review) => {
                 return <h3>{ review.content}</h3>
               })
             }
-            <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
-           <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
           </div>
+
+          <div>
+            <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
+            <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
+          </div>
+            
+         </div>
         }
       </div>
-    </Layout>
+    // </Layout>
   )
 }
 

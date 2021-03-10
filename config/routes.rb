@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :restaurants do 
     resources :reviews
-  end
+
+end
   resources :users
   # resources :reviews, only: :index
   post '/auth/login', to: 'authentication#login'
