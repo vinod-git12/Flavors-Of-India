@@ -61,7 +61,7 @@ export default function Login(props) {
             value="Sign In"></input>
           </div>
       </form>
-      <div className="form-footer">
+      <div className="form-signin">
        <Link to='/sign-up' className="register">Register</Link>
       </div>
         </div>
