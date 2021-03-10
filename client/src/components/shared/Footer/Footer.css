@@ -38,11 +38,10 @@
   padding: 1em;
 }
 
-.fab fa-github {
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  margin-top: 15px;
+.footer-img {
+  height: 20px;
+  width: 20px;
+  
 }
 
 @media screen and (max-width: 1000px) {
