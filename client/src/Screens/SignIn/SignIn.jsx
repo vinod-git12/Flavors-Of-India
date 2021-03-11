@@ -56,7 +56,7 @@ export default function Login(props) {
         <div className="button-panel">
         <input
           type="submit"
-          class="button"
+          className="button"
           title="Sign In"
             value="Sign In"></input>
           </div>

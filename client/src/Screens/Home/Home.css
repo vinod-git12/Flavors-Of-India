@@ -1,5 +1,40 @@
-.get-started {
-
-  margin: 300px;
-
+.home-logo-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
+.home-logo {
+  
+  height: 350px;
+  width: 350px;
+  margin: -20px;
+  text-align: center;
+  padding: 2em;
+ }
+
+ .home-button {
+  background: #045577;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  width: 14%;
+  margin: -10px auto;
+ }
+
+ .home-button:hover,
+ .home-button:focus {
+  background: #f0a161;
+  color: #045577;  
+}
+
+
+
+
+
