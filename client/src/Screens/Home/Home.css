@@ -5,16 +5,16 @@
 }
 .home-logo {
   
-  height: 350px;
-  width: 350px;
-  margin: -20px;
+  height: 400px;
+  width: 400px;
+  /* margin: -10px; */
   text-align: center;
   padding: 2em;
  }
 
  .home-button {
   background: #045577;
-  border-radius: 10px;
+  border-radius: 20px;
   color: #fff;
   cursor: pointer;
   height: 50px;
@@ -33,6 +33,27 @@
   background: #f0a161;
   color: #045577;  
 }
+
+@media screen and (max-width: 375px) {
+
+.home-button {
+  height: 35px;
+  width: 50%;
+  background: #cd7e09;
+}
+
+.home-logo {
+  
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  padding: 2em;
+ }
+
+
+}
+
+
 
 
 
