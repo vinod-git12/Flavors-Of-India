@@ -11,7 +11,7 @@ export default function RestaurantCreate(props) {
   });
 
   const { name, img_url, address } = formData;
-  const { createSubmit } = props;
+  const { createSubmit, error } = props;
 
 
   const handleChange = (event) => {
@@ -25,53 +25,58 @@ export default function RestaurantCreate(props) {
     
   return (
     // <Layout currentUser={props.currentUser}>
-      <div className="background">
-        <div className="create-container">
-          <h3>Create A Restaurant</h3>
-
-          <form onSubmit={(event) => {
-            event.preventDefault();
-            createSubmit(formData)
-          }} className="create-form">
-            <label className="label-create">Name of Restaurant</label>
-            <input
-              className="create-input"
-              required
-              type="text"
-              name="name"
-              value={name}
-              placeholder="Enter Name of Restaurant"
-              onChange={handleChange}
-              autoFocus
-            />
+    <div className="form-wrapper">
+    <h1>Create Restaurant</h1>
+    <form onSubmit={(event) => {
+      event.preventDefault();
+      createSubmit(formData);
+  }}>
+  <div className="form-item">
+  {
+    error &&
+    <p>{error}</p>
+  }
+ 
+  <input
+    type='text'
+      name='Name of Restaurant'
+      placeholder='Name Of Restaurant'
+    value={name}
+    onChange={handleChange}
+  />
+ </div>
         
-            <label className="label-create">Address</label>
-            <textarea
-              className="create-input"
-              required
-              type="text"
-              name="address"
-              value={address}
-              placeholder="address"
-              onChange={handleChange}
-            />
-            <label className="label-create">Image Link</label>
-            <input
-              className="create-input"
-              required
-              name="img_url"
-              value={img_url}
-              type="text"
-              placeholder="Image-url"
-              onChange={handleChange}
-            />
-            <button id="sign-in-button" type="submit">
-              Create Listing
-            </button>
-          </form>
-        </div>
-      
+ <div className="form-item">
+ 
+  <input
+    type='text'
+    name='img_url'
+    placeholder='Image-URL'
+    value={img_url}
+    onChange={handleChange}
+  />
+  </div>
+
+  <div className="form-item">
+ 
+  <input
+    type='text'
+    name='address'
+    placeholder='Address'
+    value={address}
+    onChange={handleChange}
+  />
+  </div>
+  <div className="button-panel">
+  <input
+    type="submit"
+    class="button"
+    title="Create Restaurant"
+      value="Create"></input>
     </div>
-    // </Layout>
+</form>
+
+  </div>
+            // </Layout>
   )
 }
