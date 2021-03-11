@@ -94,7 +94,39 @@
   display: none;
 }
 
-@media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px) {
+   .nav-links{
+     font-size: 13px;
+   }
+   .navbar-logo {
+     margin-left: -80px;
+   }
 
+   .logo {
+    height: 90px;
+    width: 90px;
+   }
+   .nav-menu {
+     padding: 10px;
+     grid-gap: 0.1em;
+   }
 
-}
+   .nav-menu {
+     width: 25vw;
+   }
+
+   .username {
+    position: absolute;
+    top: 50px;
+    right: -90px;
+   }
+
+   .logout-button {
+     position: absolute;
+     top: 58px;
+     right: -5px;
+     font-size: 10px;
+   }
+
+    }
+

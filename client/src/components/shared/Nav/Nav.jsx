@@ -88,7 +88,7 @@ const Nav = (props) => {
         <li
           className="nav-item login toggle"
         >
-          <NavLink to="/sign-in" className="nav-links" onClick={closeMobileMenu}>
+          <NavLink to="/sign-in" className="nav-links username" onClick={closeMobileMenu}>
             {props.currentUser ? props.currentUser.username : "Sign In "}
             <i className="fas fa-caret-down" />
           </NavLink>
@@ -96,7 +96,7 @@ const Nav = (props) => {
 
         {props.currentUser && 
           <li>
-          <button onClick={props.handleLogout}>
+          <button onClick={props.handleLogout} className="logout-button">
             Log Out
           </button>
           </li>
