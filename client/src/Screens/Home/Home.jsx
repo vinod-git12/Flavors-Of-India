@@ -17,7 +17,7 @@ const Home = (props) => {
       </div>
 
       <div className="home-signin">
-        <Link to='/sign-up' className="register">
+        <Link to='/sign-in' className="register">
           <button className="home-button">Get Started</button>
         </Link>
       </div>
