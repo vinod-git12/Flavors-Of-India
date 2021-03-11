@@ -28,7 +28,7 @@ export default function RestaurantEdit(props) {
   }, [id])
 
   useEffect(() => {
-    const prefillFormData = () => {
+    const prefillFormData = (props) => {
       const restaurantChange = restaurants.find((restaurant) => restaurant.id === Number(id));
       setFormData({
         name: restaurantChange.name,
@@ -51,19 +51,22 @@ export default function RestaurantEdit(props) {
 
     return (
       // <Layout currentUser={props.currentUser}>
-      //   <div className="restaurant-edit">
-      //     <div className="edit-image-container">
-      //       <img
-      //         className="edit-restaurant-image"
-      //         src={restaurant.img_url}
-      //         alt={restaurant.name}
-      //         />
+        // <div className="restaurant-edit">
+        //   <div className="edit-image-container">
+        //     <img
+        //       className="edit-restaurant-image"
+        //       src={restaurant.img_url}
+        //       alt={restaurant.name}
+        //   />
+        //   </div>
       <div className="form-container">
+        <h1>Update Restaurant</h1>
         <form className="edit-form" onSubmit={(e) => {
           e.preventDefault();
           updateSubmit(id, formData)
           history.push('/restaurants')
         }}>
+        <div>
           <input
             className="input-name"
             required
@@ -73,7 +76,8 @@ export default function RestaurantEdit(props) {
             placeholder="Name of Restaurant"
             onChange={handleChange}
             autoFocus
-          />
+            />
+            </div>
         
           <input
             className="create-address"
@@ -97,6 +101,6 @@ export default function RestaurantEdit(props) {
             Update Restaurant
             </button>
         </form>
-      </div>
+        </div>
     );
   };

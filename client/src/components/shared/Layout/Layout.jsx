@@ -7,7 +7,7 @@ const Layout = (props) => {
   const { currentUser, handleLogout } = props;
 
   return (
-    <div className="layout-children">
+    <div className="layout">
       <div className="layout-content">
         <Nav currentUser={currentUser}
           handleLogout={handleLogout}

@@ -41,12 +41,18 @@ export default function RestaurantDetail(props) {
         {
         restaurant &&
         <div className="restaurant-details">
-
+          <div className="left-container">
           <div className="restaurant-image-container">
             <img src={restaurant.img_url}
             alt={restaurant.name}
             className="restaurant-image" />
           </div>
+
+          <div className="restaurant-updatedelete">
+            <Link to={`/edit-restaurant/${id}`}><button className="detail-button">Update</button></Link>
+            <button className="detail-button" onClick={() => removeSubmit(restaurant.id)}>Delete</button>
+            </div>
+            </div>
 
           <div className="restaurant-info">
           <div className="restaurant-details-container"> 
@@ -55,10 +61,7 @@ export default function RestaurantDetail(props) {
           </div>
 
 
-          <div className="restaurant-updatedelete">
-            <Link to={`/edit-restaurant/${id}`}><button>Update</button></Link>
-            <button onClick={() => removeSubmit(restaurant.id)}>Delete</button>
-          </div>
+          
       </div>
           <div className="restaurant-reviews"><h3><strong>Reviews</strong></h3>
             {
