@@ -59,16 +59,15 @@ export default function RestaurantEdit(props) {
         //       alt={restaurant.name}
         //   />
         //   </div>
-      <div className="form-container">
+      <div className="form-wrapper">
         <h1>Update Restaurant</h1>
-        <form className="edit-form" onSubmit={(e) => {
+        <form onSubmit={(e) => {
           e.preventDefault();
           updateSubmit(id, formData)
           history.push('/restaurants')
         }}>
-        <div>
+        <div className="form-item">
           <input
-            className="input-name"
             required
             type="text"
             name="name"
@@ -79,27 +78,37 @@ export default function RestaurantEdit(props) {
             />
             </div>
         
-          <input
-            className="create-address"
-            required
-            type="text"
-            name="address"
-            value={address}
-            placeholder="address"
-            onChange={handleChange}
-          />
-          <input
-            className="create-input"
-            required
-            name="img_url"
-            value={img_url}
-            type="text"
-            placeholder="Image-url"
-            onChange={handleChange}
-          />
-          <button id="save-button" type="submit">
-            Update Restaurant
-            </button>
+            <div className="form-item">
+              <input
+              className="create-address"
+              required
+              type="text"
+              name="address"
+              value={address}
+              placeholder="address"
+              onChange={handleChange}
+            />
+            </div>
+          
+            <div className="form-item">
+              <input
+              className="create-input"
+              required
+              name="img_url"
+              value={img_url}
+              type="text"
+              placeholder="Image-url"
+              onChange={handleChange}
+            />
+          </div>
+          
+            <div className="button-panel">
+              <input
+              type="submit"
+              class="button"
+              title="Update"
+              value="Update"></input>
+            </div>
         </form>
         </div>
     );
