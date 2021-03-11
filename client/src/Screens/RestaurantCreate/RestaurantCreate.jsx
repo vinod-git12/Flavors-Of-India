@@ -39,7 +39,7 @@ export default function RestaurantCreate(props) {
  
   <input
     type='text'
-      name='Name of Restaurant'
+      name='name'
       placeholder='Name Of Restaurant'
     value={name}
     onChange={handleChange}
